@@ -1,0 +1,14 @@
+{
+	"autoload" : {
+		"psr-4" : {
+			"SuaGestao\\" : "src"
+		}
+	},
+	"name" : "SuaGestao/SuaGestao",
+	"type" : "project",
+	"license" : "MIT",
+	"require" : {
+		"php" : ">=7.0",
+		"nfephp-org/sped-nfe" : "dev-master"
+	}
+}
