@@ -231,12 +231,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nfephp-org/sped-nfe.git",
-                "reference": "5398f8e07eab0029de2d94b78a2fb0322ea98ac8"
+                "reference": "52530fee0d160612c43207aeabc0c920b56c4b27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nfephp-org/sped-nfe/zipball/5398f8e07eab0029de2d94b78a2fb0322ea98ac8",
-                "reference": "5398f8e07eab0029de2d94b78a2fb0322ea98ac8",
+                "url": "https://api.github.com/repos/nfephp-org/sped-nfe/zipball/52530fee0d160612c43207aeabc0c920b56c4b27",
+                "reference": "52530fee0d160612c43207aeabc0c920b56c4b27",
                 "shasum": ""
             },
             "require": {
@@ -288,7 +288,7 @@
                 "nfephp",
                 "sped"
             ],
-            "time": "2017-08-27T15:13:04+00:00"
+            "time": "2017-08-30T12:06:05+00:00"
         },
         {
             "name": "psr/log",
