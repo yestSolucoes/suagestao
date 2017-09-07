@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = 'https://yest.online/app/pdv/demo/';
+$config['base_url'] = 'https://localhost/suagestao/';
 
 /*
 |--------------------------------------------------------------------------

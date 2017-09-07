@@ -401,7 +401,6 @@
 													<button type="button" class="btn btn-success btn-block btn-flat" id="<?= $eid ? 'submit-sale' : 'payment'; ?>" style="height:67px;"><?= $eid ? lang('submit') : lang('payment'); ?></button>
 												</div>
 											</div>
-
 										</div>
 										<div class="clearfix"></div>
 										<span id="hidesuspend"></span>

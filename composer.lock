@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa7928f77a5f32a169126a901b9680df",
+    "content-hash": "a9b3b54cd0b07baa5b479794a3d0e9fa",
     "packages": [
         {
             "name": "justinrainbow/json-schema",
@@ -231,12 +231,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nfephp-org/sped-nfe.git",
-                "reference": "52530fee0d160612c43207aeabc0c920b56c4b27"
+                "reference": "7dc6e08d64816a15703e27d1c2f7ce82dc5c5a2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nfephp-org/sped-nfe/zipball/52530fee0d160612c43207aeabc0c920b56c4b27",
-                "reference": "52530fee0d160612c43207aeabc0c920b56c4b27",
+                "url": "https://api.github.com/repos/nfephp-org/sped-nfe/zipball/7dc6e08d64816a15703e27d1c2f7ce82dc5c5a2d",
+                "reference": "7dc6e08d64816a15703e27d1c2f7ce82dc5c5a2d",
                 "shasum": ""
             },
             "require": {
@@ -288,7 +288,7 @@
                 "nfephp",
                 "sped"
             ],
-            "time": "2017-08-30T12:06:05+00:00"
+            "time": "2017-09-04T20:51:10+00:00"
         },
         {
             "name": "psr/log",
@@ -401,8 +401,6 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": {
-        "php": ">=7.0"
-    },
+    "platform": [],
     "platform-dev": []
 }

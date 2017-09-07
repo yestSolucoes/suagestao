@@ -1,5 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+include ('/../../ApiRestNFe/Make_Nfe.php');
+
 class Pos_model extends CI_Model
 {
 
@@ -387,11 +389,19 @@ class Pos_model extends CI_Model
           }
           return FALSE;
     }
-
+    
+    
+    /**
+     * Separate adiciona
+     * @param  array $array
+     * @return array
+     */
     public function addSale($data, $items, $payment = array(), $did = NULL)
     {
-
-        if($this->db->insert('sales', $data)) {
+        
+        $nfe = new Nfe();
+        
+        if($this->db->insert('sales', $data) ) {
             $sale_id = $this->db->insert_id();
 
             foreach ($items as $item) {
@@ -449,6 +459,8 @@ class Pos_model extends CI_Model
             }
 
         return false;
+        
+        
     }
 
     function stripe($amount = 0, $card_info = array(), $desc = '')

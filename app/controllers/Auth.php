@@ -128,9 +128,9 @@ class Auth extends MY_Controller {
         if($this->Settings->captcha) {
             $this->form_validation->set_rules('captcha', lang('captcha'), 'required|callback_captcha_check');
         }
-
+                
         if ($this->form_validation->run() == true) {
-
+            
             $remember = (bool) $this->input->post('remember');
 
             if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember)) {
@@ -142,9 +142,10 @@ class Auth extends MY_Controller {
                 }
 
                 $this->session->set_flashdata('message', $this->ion_auth->messages());
-                $referrer = $this->session->userdata('requested_page') ? $this->session->userdata('requested_page') : 'pos';
+                
+                $referrer = $this->session->userdata('requested_page') ? $this->session->userdata('requested_page') : 'pos';                
                 redirect($referrer);
-            } else {
+            } else {                
                 $this->session->set_flashdata('error', $this->ion_auth->errors());
                 redirect('login');
             }
@@ -179,7 +180,6 @@ class Auth extends MY_Controller {
                     );
             }
             $this->data['page_title'] = lang('login');
-
             $this->load->view($this->theme.'auth/login', $this->data);
         }
     }

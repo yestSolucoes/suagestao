@@ -7,7 +7,7 @@ class Pos extends MY_Controller {
 		parent::__construct();
 
 		if (!$this->loggedIn) {
-			redirect('login');
+		    redirect('login');
 		}
 		$this->load->library('form_validation');
 		$this->load->model('pos_model');
@@ -218,7 +218,7 @@ class Pos extends MY_Controller {
 					'pos_balance' => $this->tec->formatDecimal($this->input->post('balance_amount'))
 					);
 				$data['paid'] = $amount;
-
+                
 			} else {
 				$payment = array();
 			}
