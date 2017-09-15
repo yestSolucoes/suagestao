@@ -1,6 +1,8 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php  
 
-include ('/../../ApiRestNFe/Make_Nfe.php');
+use App\Helpers\Fiscal\Nfe;
+
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Pos_model extends CI_Model
 {
