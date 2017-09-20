@@ -1,5 +1,5 @@
-<?php
-namespace App\Helpers\Fiscal;
+<?php 
+namespace ApiRestNFe;
 
 require_once FCPATH . 'vendor/autoload.php';
 
@@ -7,6 +7,8 @@ use NFePHP\NFe\Tools;
 use NFePHP\Common\Certificate;
 use NFePHP\Common\Soap\SoapCurl;
 use NFePHP\NFe\Make;
+use ApiRestNFe\Helpers\Fiscal\NfeIde;
+
 
 class Nfe
 {
@@ -418,6 +420,27 @@ class Nfe
         $config = [
             "atualizacao" => date('Y-m-d H:i:s'),
             "tpAmb" => $this->getEnvironment(),
+            "razaosocial" => "",
+            "siglaUF" => "",
+            "cnpj" => $this->getUnidadeModel()->Empresa->getCpfCnpjSomenteNumeros(),
+            "schemes" => "PL_009_V4",
+            "versao" => $this->getVersion(),
+            "tokenIBPT" => "",
+            "CSC" => "GPB0JBWLUR6HWFTVEAS6RJ69GPCROFPBBB8G", //nao existe o campo ainda
+            "CSCid" => "000002", // nao existe o id ainda
+            "aProxyConf" => [
+                "proxyIp" => "",
+                "proxyPort" => "",
+                "proxyUser" => "",
+                "proxyPass" => ""
+            ]
+        ];
+        
+        /**
+        $config = [
+            "atualizacao" => date('Y-m-d H:i:s'),
+            "tpAmb" => $this->getEnvironment(),
+            "razaosocial" => "Barões do café",
             "razaosocial" => $this->getUnidadeModel()->descricao,
             "siglaUF" => $this->getUnidadeModel()->Empresa->Endereco[0]->Uf->getSigla(),
             "cnpj" => $this->getUnidadeModel()->Empresa->getCpfCnpjSomenteNumeros(),
@@ -433,17 +456,19 @@ class Nfe
                 "proxyPass" => ""
             ]
         ];
-
+        **/
         return json_encode($config);
     }
 
 
-    public function gerarXmlNfe($nfe)
+    public function gerarXmlNfe($nfe, $items, $payment = array())
     {
-        $nfePhp = Make::v400();
+        $nfePhp = new Make();
 
+        /**
         $dataChave = \DateTime::createFromFormat('Y-m-d', $nfe->getIde()->getDhEmi());
 
+        
         $config = \json_decode($nfe->getConfig());
 
         $chave = \App\Helpers\Fiscal\NfeCommon::montaChave(
@@ -457,36 +482,27 @@ class Nfe
             $nfe->getIde()->getTpEmis(),
             $nfe->getIde()->getCNf()
         );
-
+        
+        
         $resp = $nfePhp->taginfNFe($chave, '4.00');
-        $cDV = substr($chave, -1);
-
-        $resp = $nfePhp->tagide(
-            $nfe->getIde()->getCUf(),
-            $nfe->getIde()->getCNf(),
-            $nfe->getIde()->getNatOp(),
-            $nfe->getIde()->getIndPag(),
-            $nfe->getIde()->getMod(),
-            $nfe->getIde()->getSerie(),
-            $nfe->getIde()->getNNf(),
-            $nfe->getIde()->getDhEmi(),
-            $nfe->getIde()->getDhSaiEnt(),
-            $nfe->getIde()->getTpEmis(),
-            $nfe->getIde()->getIdDest(),
-            $nfe->getIde()->getCMunFg(),
-            $nfe->getIde()->getTpImp(),
-            $nfe->getIde()->getTpEmis(),
-            $nfe->getIde()->getCDv(),
-            $nfe->getIde()->getTpAmb(),
-            $nfe->getIde()->getFinNFe(),
-            $nfe->getIde()->getIndFinal(),
-            $nfe->getIde()->getIndPres(),
-            $nfe->getIde()->getProcEmi(),
-            $nfe->getIde()->getVerProc(),
-            $nfe->getIde()->getDhCont(),
-            $nfe->getIde()->getXJust()
-        );
-
+        **/
+        $array = [
+            'versao' => '3.10',
+            'Id' => 'NFe35150271780456000160550010000000021800700082',
+            'pk_nItem' => null
+        ];
+        
+        $std = json_decode(json_encode($array));
+              
+        $resp = $nfePhp->taginfNFe($std);
+        
+        $cDV = substr('NFe35150271780456000160550010000000021800700082', -1);   
+        
+        $ide = new NfeIde();
+        
+        $resp = $nfePhp->tagide($ide);
+               
+        
         $resp = $nfePhp->tagemit(
             $nfe->getEmit()->getCnpj(),
             $nfe->getEmit()->getCpf(),
@@ -794,5 +810,5 @@ class Nfe
         print_r($xml);
 
     }
-
+    
 }

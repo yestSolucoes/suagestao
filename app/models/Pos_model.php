@@ -1,6 +1,7 @@
-<?php  
+<?php
+use NFePHP\NFe\Make;
 
-use App\Helpers\Fiscal\Nfe;
+require_once('ApiRestNFe\Make_Nfe.php');
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
@@ -391,8 +392,7 @@ class Pos_model extends CI_Model
           }
           return FALSE;
     }
-    
-    
+
     /**
      * Separate adiciona
      * @param  array $array
@@ -401,11 +401,15 @@ class Pos_model extends CI_Model
     public function addSale($data, $items, $payment = array(), $did = NULL)
     {
         
-        $nfe = new Nfe();
+        $maker_nfe = new \ApiRestNFe\Nfe();
         
+        $xml = $maker_nfe->gerarXmlNfe($maker_nfe, $items, $payment);
+        
+        // Verifica se a inserção na tabedeu certo
         if($this->db->insert('sales', $data) ) {
             $sale_id = $this->db->insert_id();
-
+            
+            //Dando baixa nos produtos
             foreach ($items as $item) {
                 $item['sale_id'] = $sale_id;
                 if($this->db->insert('sale_items', $item)) {
@@ -424,13 +428,15 @@ class Pos_model extends CI_Model
                     }
                 }
             }
-
+            //
+            
             if($did) {
                 $this->db->delete('suspended_sales', array('id' => $did));
                 $this->db->delete('suspended_items', array('suspend_id' => $did));
-            }
+            }            
+            
             $msg = array();
-            if(! empty($payment)) {
+            if(!empty($payment)) {
                 if ($payment['paid_by'] == 'stripe') {
                     $card_info = array("number" => $payment['cc_no'], "exp_month" => $payment['cc_month'], "exp_year" => $payment['cc_year'], "cvc" => $payment['cc_cvv2'], 'type' => $payment['cc_type']);
                     $result = $this->stripe($payment['amount'], $card_info);

@@ -256,7 +256,7 @@ class Pos extends MY_Controller {
 				}
 
 			} else {
-
+                //verifica se todos a venda e os produtos foram dado baixa.
 				if($sale = $this->pos_model->addSale($data, $products, $payment, $did)) {
 					$this->session->set_userdata('rmspos', 1);
 					$msg = lang("sale_added");

@@ -158,16 +158,16 @@
         },
         {
             "name": "nfephp-org/sped-common",
-            "version": "v5.0.8",
+            "version": "v5.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nfephp-org/sped-common.git",
-                "reference": "07a2fd2ff282d768f9914294ca313a874d0fea0d"
+                "reference": "90c036fbb87f9eec3bee65609ddd2a85dcec996a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nfephp-org/sped-common/zipball/07a2fd2ff282d768f9914294ca313a874d0fea0d",
-                "reference": "07a2fd2ff282d768f9914294ca313a874d0fea0d",
+                "url": "https://api.github.com/repos/nfephp-org/sped-common/zipball/90c036fbb87f9eec3bee65609ddd2a85dcec996a",
+                "reference": "90c036fbb87f9eec3bee65609ddd2a85dcec996a",
                 "shasum": ""
             },
             "require": {
@@ -178,7 +178,8 @@
                 "ext-soap": "*",
                 "league/flysystem": "^1.0",
                 "php": "^5.6 || ^7.0",
-                "psr/log": "^1.0"
+                "psr/log": "^1.0",
+                "symfony/yaml": "^3.3"
             },
             "require-dev": {
                 "jakub-onderka/php-console-highlighter": "^0.3.2",
@@ -223,7 +224,7 @@
                 "nfephp",
                 "sped"
             ],
-            "time": "2017-07-21T20:16:43+00:00"
+            "time": "2017-09-15T14:38:39+00:00"
         },
         {
             "name": "nfephp-org/sped-nfe",
@@ -231,12 +232,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nfephp-org/sped-nfe.git",
-                "reference": "7dc6e08d64816a15703e27d1c2f7ce82dc5c5a2d"
+                "reference": "857797eb4d49f228e7c36ddb3460fc1e39a8d7c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nfephp-org/sped-nfe/zipball/7dc6e08d64816a15703e27d1c2f7ce82dc5c5a2d",
-                "reference": "7dc6e08d64816a15703e27d1c2f7ce82dc5c5a2d",
+                "url": "https://api.github.com/repos/nfephp-org/sped-nfe/zipball/857797eb4d49f228e7c36ddb3460fc1e39a8d7c0",
+                "reference": "857797eb4d49f228e7c36ddb3460fc1e39a8d7c0",
                 "shasum": ""
             },
             "require": {
@@ -288,7 +289,7 @@
                 "nfephp",
                 "sped"
             ],
-            "time": "2017-09-04T20:51:10+00:00"
+            "time": "2017-09-17T14:42:51+00:00"
         },
         {
             "name": "psr/log",
@@ -339,7 +340,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.3.8",
+            "version": "v3.3.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
